@@ -12,22 +12,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team2212.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2212.robot.subsystems.ExampleSubsystem;
 
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
-	public static OI m_oi;
+	
+	public static OI oi;
 
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	Command autonomousCommand;
+	SendableChooser<Command> autoChooser = new SendableChooser<>();
 	
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		oi = new OI();
+		SmartDashboard.putData("Auto mode", autoChooser);
 	}
 
 	/**
@@ -58,10 +54,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		autonomousCommand = autoChooser.getSelected();
 
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
 		}
 	}
 
@@ -75,8 +71,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
 		}
 	}
 
