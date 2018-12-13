@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team2212.robot;
 
+import com.spikes2212.dashboard.DashBoardController;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,6 +19,7 @@ public class Robot extends TimedRobot {
 	
 	public static OI oi;
 
+	DashBoardController dbc;
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
 	
@@ -24,6 +27,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		SmartDashboard.putData("Auto mode", autoChooser);
+		dbc = new DashBoardController();
 	}
 
 	/**
@@ -39,6 +43,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		dbc.update();
 	}
 
 	/**
@@ -67,6 +72,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		dbc.update();
 	}
 
 	@Override
@@ -82,6 +88,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		dbc.update();
 	}
 
 	/**
