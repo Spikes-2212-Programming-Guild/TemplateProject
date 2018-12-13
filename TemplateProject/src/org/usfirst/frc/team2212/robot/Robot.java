@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2212.robot;
 
 import com.spikes2212.dashboard.DashBoardController;
+import com.spikes2212.utils.CamerasHandler;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,9 +20,10 @@ public class Robot extends TimedRobot {
 	
 	public static OI oi;
 
-	DashBoardController dbc;
-	Command autonomousCommand;
-	SendableChooser<Command> autoChooser = new SendableChooser<>();
+	private CamerasHandler camerasHandler;
+	private DashBoardController dbc;
+	private Command autonomousCommand;
+	private SendableChooser<Command> autoChooser = new SendableChooser<>();
 	
 	@Override
 	public void robotInit() {
