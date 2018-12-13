@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team2212.robot;
 
-public class OI {
+public class OI /*GEVALD*/ {
 	
+	
+	public OI(){
+		
+	}
 }
