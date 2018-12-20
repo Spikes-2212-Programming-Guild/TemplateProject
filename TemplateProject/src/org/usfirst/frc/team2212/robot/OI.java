@@ -25,4 +25,21 @@ public class OI /* GEVALD */ {
 	public static double adjustInput(double speed) {
 		return speed * Math.abs(speed);
 	}
+	
+	public double getLeftJoystickX(){
+		return -adjustInput(this.driverLeft.getX());
+	}
+	
+	public double getLeftJoystickY(){
+		return -adjustInput(this.driverLeft.getY());
+	}
+	
+	public double getRightJoystickX(){
+		return -adjustInput(this.driverRight.getX());
+	}
+	
+	public double getRightJoystickY(){
+		return -adjustInput(this.driverRight.getY());
+	}
 }
+
