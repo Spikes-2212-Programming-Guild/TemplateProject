@@ -19,4 +19,8 @@ public class RobotMap {
 	public static interface PWM{
 		
 	}
+	
+	public static interface ANALOG{
+		
+	}
 }
