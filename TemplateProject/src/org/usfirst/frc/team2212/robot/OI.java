@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class OI /* GEVALD */ {
 
-	private Joystick driverLeft = new Joystick(0);
-	private Joystick driverRight = new Joystick(1);
+	private Joystick driverRight = new Joystick(0);
+	private Joystick driverLeft = new Joystick(1);
 
 	private XboXUID navigator = new XboXUID(2);
 
